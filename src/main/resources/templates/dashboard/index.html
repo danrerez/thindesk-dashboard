@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{__${theme.layout}__}">
+<head>
+    <title>Dashboard</title>
+    <script th:src="@{/webjars/chart.js/4.5.1/dist/chart.umd.js}" defer></script>
+    <script th:src="@{/js/api.js}" defer></script>
+    <script th:src="@{/js/filters.js}" defer></script>
+    <script th:src="@{/js/dashboard.js}" defer></script>
+</head>
+<body>
+<section layout:fragment="content" class="dashboard" th:attr="data-refresh-seconds=${refreshSeconds}">
+    <header class="page__header page__header--split">
+        <div>
+            <span class="eyebrow">Thindesk</span>
+            <h1>Dashboard de chamados</h1>
+            <p class="muted">Acompanhe o andamento dos chamados técnicos, a situação do backlog e o cumprimento do SLA.</p>
+        </div>
+        <div class="refresh" aria-live="polite">
+            <span class="refresh__status muted small" data-last-update>Carregando...</span>
+            <label class="check small">
+                <input type="checkbox" data-auto-refresh checked>
+                Atualizar a cada <span th:text="${refreshSeconds}">60</span>s
+            </label>
+            <button type="button" class="btn btn--ghost btn--sm" data-refresh>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.7 6.3A8 8 0 1 0 19.9 14h-2.1a6 6 0 1 1-1.4-6.3L13 11h7V4l-2.3 2.3z"/></svg>
+                Atualizar
+            </button>
+        </div>
+    </header>
+
+    <div th:replace="~{fragments/filters :: filters(false)}"></div>
+
+    <div class="alert alert--danger" role="alert" data-global-error hidden></div>
+
+    <!-- RF01: indicadores gerais -->
+    <section class="kpis" aria-label="Indicadores gerais" data-widget="summary">
+        <article class="kpi">
+            <span class="kpi__label">Chamados no período</span>
+            <strong class="kpi__value" data-kpi="total">-</strong>
+            <span class="kpi__hint" data-kpi-hint="total"></span>
+        </article>
+        <article class="kpi">
+            <span class="kpi__label">Em aberto (backlog)</span>
+            <strong class="kpi__value" data-kpi="active">-</strong>
+            <span class="kpi__hint" data-kpi-hint="active"></span>
+        </article>
+        <article class="kpi">
+            <span class="kpi__label">Atendidos</span>
+            <strong class="kpi__value" data-kpi="solved">-</strong>
+            <span class="kpi__hint" data-kpi-hint="solved"></span>
+        </article>
+        <article class="kpi kpi--danger">
+            <span class="kpi__label">Atrasados (fora do SLA)</span>
+            <strong class="kpi__value" data-kpi="overdue">-</strong>
+            <span class="kpi__hint" data-kpi-hint="overdue"></span>
+        </article>
+        <article class="kpi">
+            <span class="kpi__label">Taxa de resolução</span>
+            <strong class="kpi__value" data-kpi="resolutionRate">-</strong>
+            <span class="kpi__hint">resolvidos sobre não cancelados</span>
+        </article>
+        <article class="kpi">
+            <span class="kpi__label">SLA cumprido</span>
+            <strong class="kpi__value" data-kpi="slaMetPercent">-</strong>
+            <span class="kpi__hint">resolvidos dentro do prazo</span>
+        </article>
+        <article class="kpi">
+            <span class="kpi__label">1ª resposta (média)</span>
+            <strong class="kpi__value" data-kpi="avgFirstResponseHours">-</strong>
+            <span class="kpi__hint">da abertura ao início do atendimento</span>
+        </article>
+        <article class="kpi">
+            <span class="kpi__label">Tempo de solução (média)</span>
+            <strong class="kpi__value" data-kpi="avgResolutionHours">-</strong>
+            <span class="kpi__hint" data-kpi-hint="avgResolutionHours"></span>
+        </article>
+    </section>
+
+    <section class="card insights" aria-label="Destaques" data-widget="insights">
+        <h3>Destaques do período</h3>
+        <ul class="insights__list" data-insights>
+            <li class="muted">Calculando...</li>
+        </ul>
+    </section>
+
+    <!-- RF02: chamados atendidos por período -->
+    <section class="card chart-card" data-widget="timeline">
+        <header class="chart-card__header">
+            <div>
+                <h3>Chamados abertos x atendidos</h3>
+                <p class="muted small" data-timeline-caption>Série histórica do período filtrado</p>
+            </div>
+            <div class="segmented" role="group" aria-label="Agrupar por">
+                <button type="button" class="segmented__item is-active" data-granularity="">Auto</button>
+                <button type="button" class="segmented__item" data-granularity="DAY">Dia</button>
+                <button type="button" class="segmented__item" data-granularity="WEEK">Semana</button>
+                <button type="button" class="segmented__item" data-granularity="MONTH">Mês</button>
+            </div>
+        </header>
+        <div class="chart chart--wide"><canvas id="chart-timeline" aria-label="Gráfico de chamados abertos e atendidos por período" role="img"></canvas></div>
+        <p class="widget__empty muted" hidden>Nenhum chamado no período.</p>
+    </section>
+
+    <div class="grid grid--2 grid--dense">
+        <!-- RF03: situação dos chamados -->
+        <section class="card chart-card" data-widget="status">
+            <header class="chart-card__header">
+                <div>
+                    <h3>Situação dos chamados</h3>
+                    <p class="muted small">Distribuição por situação atual</p>
+                </div>
+            </header>
+            <div class="status-panel">
+                <div class="chart chart--square"><canvas id="chart-status" aria-label="Gráfico da situação dos chamados" role="img"></canvas></div>
+                <ul class="legend" data-status-legend></ul>
+            </div>
+        </section>
+
+        <section class="card" data-widget="priority">
+            <header class="chart-card__header">
+                <div>
+                    <h3>Backlog por prioridade</h3>
+                    <p class="muted small">Chamados em aberto e quantos já passaram do prazo</p>
+                </div>
+            </header>
+            <div class="table-scroll">
+            <table class="table table--compact">
+                <thead>
+                <tr><th>Prioridade</th><th>SLA</th><th class="text-right">Em aberto</th><th class="text-right">Atrasados</th><th class="col-bar"></th></tr>
+                </thead>
+                <tbody data-priority-rows><tr><td colspan="5" class="muted">Carregando...</td></tr></tbody>
+            </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- RF04: tipos de chamados mais atendidos -->
+    <section class="card chart-card" data-widget="types">
+        <header class="chart-card__header">
+            <div>
+                <h3>Tipos mais atendidos</h3>
+                <p class="muted small" data-types-caption>Ranking por chamados resolvidos ou fechados</p>
+            </div>
+            <div class="segmented" role="group" aria-label="Ordenar ranking por">
+                <button type="button" class="segmented__item is-active" data-metric="SOLVED">Atendidos</button>
+                <button type="button" class="segmented__item" data-metric="TOTAL">Abertos</button>
+            </div>
+        </header>
+        <div class="split">
+            <div class="chart chart--bars"><canvas id="chart-types" aria-label="Ranking de tipos de chamado" role="img"></canvas></div>
+            <div class="table-scroll">
+                <table class="table table--compact">
+                    <thead>
+                    <tr><th>#</th><th>Tipo</th><th class="text-right">Total</th><th class="text-right">Atendidos</th><th class="text-right">Tempo médio</th><th class="text-right">SLA</th></tr>
+                    </thead>
+                    <tbody data-type-rows></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="card chart-card" data-widget="technicians">
+        <header class="chart-card__header">
+            <div>
+                <h3>Desempenho por técnico</h3>
+                <p class="muted small" data-technicians-caption>Ordenado por chamados atendidos</p>
+            </div>
+        </header>
+        <div class="table-scroll">
+            <table class="table table--compact">
+                <thead>
+                <tr><th>#</th><th>Técnico</th><th class="text-right">Atribuídos</th><th class="text-right">Atendidos</th><th class="text-right">Em aberto</th><th class="text-right">Tempo médio</th><th class="text-right">SLA</th></tr>
+                </thead>
+                <tbody data-technician-rows><tr><td colspan="7" class="muted">Carregando...</td></tr></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card" data-widget="overdue">
+        <header class="chart-card__header">
+            <div>
+                <h3>Chamados que exigem atenção</h3>
+                <p class="muted small">Em aberto e fora do prazo, do mais atrasado para o menos atrasado</p>
+            </div>
+            <a class="btn btn--ghost btn--sm" data-overdue-link th:href="@{/tickets(overdue=true)}">Ver todos</a>
+        </header>
+        <div class="table-scroll">
+            <table class="table table--compact">
+                <thead>
+                <tr><th>Protocolo</th><th>Título</th><th>Prioridade</th><th>Situação</th><th>Técnico</th><th class="text-right">Atraso</th></tr>
+                </thead>
+                <tbody data-overdue-rows><tr><td colspan="6" class="muted">Carregando...</td></tr></tbody>
+            </table>
+        </div>
+    </section>
+</section>
+</body>
+</html>
