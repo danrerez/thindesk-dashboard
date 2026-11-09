@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<aside class="sidebar" id="sidebar" th:fragment="sidebar">
+    <a class="brand sidebar__brand" th:href="@{/}">
+        <img class="brand__logo" th:src="@{/images/favicon.svg}" alt="" width="28" height="28">
+        <span>Thindesk</span>
+    </a>
+
+    <nav class="sidebar__nav" aria-label="Navegação principal">
+        <a sec:authorize="hasRole('MANAGER')" class="sidebar__link" th:href="@{/dashboard}"
+           th:classappend="${#strings.startsWith(currentPath, '/dashboard')} ? 'is-active'">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+            <span>Dashboard</span>
+        </a>
+        <a sec:authorize="hasRole('MANAGER')" class="sidebar__link" th:href="@{/tickets}"
+           th:classappend="${#strings.startsWith(currentPath, '/tickets')} ? 'is-active'">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4a2 2 0 1 1 0 4v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 1 1 0-4zm-9 7.5h-2v-2h2v2zm0-4.5h-2v-2h2v2zm0-4.5h-2v-2h2v2z"/></svg>
+            <span>Chamados</span>
+        </a>
+        <a sec:authorize="hasRole('MANAGER')" class="sidebar__link" th:href="@{/users}"
+           th:classappend="${#strings.startsWith(currentPath, '/users')} ? 'is-active'">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-3.3 0-7 1.7-7 4v3h14v-3c0-2.3-3.7-4-7-4zm7.5-2.2a3.5 3.5 0 1 0 0-6.6 5.9 5.9 0 0 1 0 6.6zM18 13.3c1.6.8 3 2 3 3.7v3h-3v-3c0-1.4-.5-2.6-1.4-3.6.5-.1.9-.1 1.4-.1z"/></svg>
+            <span>Usuários</span>
+        </a>
+        <a sec:authorize="!hasRole('MANAGER')" class="sidebar__link" th:href="@{/profile}"
+           th:classappend="${currentPath == '/profile'} ? 'is-active'">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v3h16v-3c0-2.8-3.6-5-8-5z"/></svg>
+            <span>Meu perfil</span>
+        </a>
+    </nav>
+
+    <nav class="sidebar__nav sidebar__nav--bottom" aria-label="Links de apoio" sec:authorize="hasRole('MANAGER')">
+        <a class="sidebar__link" th:href="@{/swagger-ui.html}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+            <span>Documentação da API</span>
+        </a>
+    </nav>
+</aside>
+</body>
+</html>

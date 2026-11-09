@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{__${theme.layout}__}">
+<head>
+    <title>Meu perfil</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <header class="page__header">
+        <div>
+            <span class="eyebrow">Conta</span>
+            <h1>Meu perfil</h1>
+            <p class="muted">
+                <span th:text="${user.email}">email</span>
+                <span th:replace="~{fragments/badges :: role(${user.role})}"></span>
+            </p>
+        </div>
+    </header>
+
+    <div class="grid grid--2">
+        <div class="card">
+            <h3>Dados pessoais</h3>
+            <form th:action="@{/profile}" th:object="${profileForm}" method="post" class="form" novalidate>
+                <div class="field" th:classappend="${#fields.hasErrors('name')} ? 'field--invalid'">
+                    <label for="name">Nome</label>
+                    <input type="text" th:field="*{name}" autocomplete="name" maxlength="80" required>
+                    <p th:replace="~{fragments/alerts :: fieldError('name')}"></p>
+                </div>
+                <button type="submit" class="btn btn--primary">Salvar</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Trocar senha</h3>
+            <form th:action="@{/profile/password}" th:object="${passwordForm}" method="post" class="form" novalidate>
+                <div class="field" th:classappend="${#fields.hasErrors('currentPassword')} ? 'field--invalid'">
+                    <label for="currentPassword">Senha atual</label>
+                    <input type="password" th:field="*{currentPassword}" autocomplete="current-password" required>
+                    <p th:replace="~{fragments/alerts :: fieldError('currentPassword')}"></p>
+                </div>
+                <div class="field" th:classappend="${#fields.hasErrors('newPassword')} ? 'field--invalid'">
+                    <label for="newPassword">Nova senha</label>
+                    <input type="password" th:field="*{newPassword}" autocomplete="new-password" maxlength="64" required>
+                    <p class="field__hint">Mínimo de 8 caracteres, com maiúscula, minúscula, número e símbolo.</p>
+                    <p th:replace="~{fragments/alerts :: fieldError('newPassword')}"></p>
+                </div>
+                <div class="field" th:classappend="${#fields.hasErrors('confirmPassword')} ? 'field--invalid'">
+                    <label for="confirmPassword">Confirmar nova senha</label>
+                    <input type="password" th:field="*{confirmPassword}" autocomplete="new-password" maxlength="64" required>
+                    <p th:replace="~{fragments/alerts :: fieldError('confirmPassword')}"></p>
+                </div>
+                <button type="submit" class="btn btn--primary">Alterar senha</button>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>
