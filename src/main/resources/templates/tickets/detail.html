@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{__${theme.layout}__}">
+<head>
+    <title>Chamado</title>
+    <script th:src="@{/js/api.js}" defer></script>
+    <script th:src="@{/js/filters.js}" defer></script>
+    <script th:src="@{/js/ticket-detail.js}" defer></script>
+</head>
+<body>
+<section layout:fragment="content" class="ticket-page" th:attr="data-ticket-id=${ticketId}">
+    <a class="back-link small" th:href="@{/tickets}">&larr; Voltar para chamados</a>
+
+    <div class="alert alert--danger" data-load-error hidden></div>
+    <div class="alert alert--success" data-flash hidden></div>
+
+    <header class="page__header page__header--split" data-ticket-header hidden>
+        <div>
+            <span class="eyebrow" data-field="protocol">Protocolo</span>
+            <h1 data-field="title">Chamado</h1>
+            <p class="ticket-badges" data-field="badges"></p>
+        </div>
+        <div class="sla-box" data-sla-box>
+            <span class="muted small">Prazo de solução (SLA)</span>
+            <strong data-field="due">-</strong>
+            <span class="small" data-field="slaState"></span>
+        </div>
+    </header>
+
+    <div class="ticket-layout" data-ticket-body hidden>
+        <div class="ticket-main">
+            <section class="card">
+                <h3>Descrição</h3>
+                <p class="pre-line" data-field="description"></p>
+                <dl class="details__list">
+                    <dt>Solicitante</dt><dd data-field="requester"></dd>
+                    <dt>Setor</dt><dd data-field="department"></dd>
+                    <dt>Tipo</dt><dd data-field="type"></dd>
+                    <dt>Técnico</dt><dd data-field="technician"></dd>
+                    <dt>Aberto em</dt><dd data-field="openedAt"></dd>
+                    <dt>1ª resposta</dt><dd data-field="firstResponseAt"></dd>
+                    <dt>Resolvido em</dt><dd data-field="resolvedAt"></dd>
+                    <dt>Encerrado em</dt><dd data-field="closedAt"></dd>
+                </dl>
+            </section>
+
+            <section class="card">
+                <h3>Considerações técnicas e histórico</h3>
+                <ol class="timeline" data-timeline></ol>
+            </section>
+        </div>
+
+        <aside class="ticket-side">
+            <section class="card" data-action-panel>
+                <h3>Alterar situação</h3>
+                <form class="form" data-status-form novalidate>
+                    <div class="field">
+                        <label for="s-status">Nova situação</label>
+                        <select id="s-status" name="status" required></select>
+                    </div>
+                    <div class="field">
+                        <label for="s-note">Consideração técnica</label>
+                        <textarea id="s-note" name="note" rows="3" maxlength="2000"></textarea>
+                        <p class="field__hint" data-note-hint>Opcional. Obrigatória para resolver ou cancelar.</p>
+                    </div>
+                    <p class="field__error" data-form-error></p>
+                    <button type="submit" class="btn btn--primary btn--block">Salvar situação</button>
+                </form>
+                <p class="muted small" data-final-hint hidden>Chamado encerrado: não aceita novas alterações.</p>
+            </section>
+
+            <section class="card" data-assign-panel>
+                <h3>Técnico responsável</h3>
+                <form class="form" data-assign-form novalidate>
+                    <div class="field">
+                        <label for="a-technician">Técnico</label>
+                        <select id="a-technician" name="technicianId" required><option value="">Selecione</option></select>
+                    </div>
+                    <p class="field__error" data-form-error></p>
+                    <button type="submit" class="btn btn--ghost btn--block">Atribuir</button>
+                </form>
+            </section>
+
+            <section class="card" data-note-panel>
+                <h3>Nova consideração técnica</h3>
+                <form class="form" data-note-form novalidate>
+                    <div class="field">
+                        <label for="c-text" class="sr-only">Texto</label>
+                        <textarea id="c-text" name="text" rows="4" maxlength="2000" required
+                                  placeholder="Diagnóstico, andamento ou orientação ao usuário"></textarea>
+                    </div>
+                    <p class="field__error" data-form-error></p>
+                    <button type="submit" class="btn btn--ghost btn--block">Registrar</button>
+                </form>
+            </section>
+        </aside>
+    </div>
+</section>
+</body>
+</html>
