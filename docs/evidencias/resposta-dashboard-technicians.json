@@ -1,0 +1,38 @@
+{
+    "items": [
+        {
+            "position": 1,
+            "id": "6af1d145982ced63ebadb23e",
+            "name": "Juliana Martins",
+            "assigned": 56,
+            "solved": 50,
+            "active": 5,
+            "overdue": 5,
+            "avgResolutionHours": 48.8,
+            "slaMetPercent": 68.0
+        },
+        {
+            "position": 2,
+            "id": "6af1d145982ced63ebadb240",
+            "name": "Rafael Oliveira",
+            "assigned": 37,
+            "solved": 34,
+            "active": 1,
+            "overdue": 1,
+            "avgResolutionHours": 35.4,
+            "slaMetPercent": 64.7
+        },
+        {
+            "position": 3,
+            "id": "6af1d145982ced63ebadb242",
+            "name": "Thiago Almeida",
+            "assigned": 30,
+            "solved": 28,
+            "active": 1,
+            "overdue": 0,
+            "avgResolutionHours": 33.8,
+            "slaMetPercent": 57.1
+        }
+    ],
+    "unassignedActive": 3
+}

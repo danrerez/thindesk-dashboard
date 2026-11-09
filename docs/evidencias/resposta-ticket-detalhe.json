@@ -1,0 +1,89 @@
+{
+    "id": "6af1d1fe99272fca98b3f0c0",
+    "protocol": "TD-2026-001401",
+    "title": "Teste de integracao da API",
+    "description": "Chamado criado via curl",
+    "type": {
+        "code": "NETWORK",
+        "label": "Rede e internet"
+    },
+    "priority": {
+        "code": "HIGH",
+        "label": "Alta"
+    },
+    "status": {
+        "code": "RESOLVED",
+        "label": "Resolvido"
+    },
+    "department": {
+        "code": "SALES",
+        "label": "Comercial"
+    },
+    "requesterName": "Teste API",
+    "requesterEmail": "teste@exemplo.com.br",
+    "technician": {
+        "id": "6af1d145982ced63ebadb23c",
+        "name": "Ana Beatriz Souza"
+    },
+    "openedAt": "2026-11-09T14:00:30.656Z",
+    "dueAt": "2026-11-09T22:00:30.656Z",
+    "firstResponseAt": "2026-11-09T14:06:44.916Z",
+    "resolvedAt": "2026-11-09T14:06:49.883Z",
+    "closedAt": null,
+    "overdue": false,
+    "slaMet": true,
+    "slaHours": 8,
+    "allowedTransitions": [
+        {
+            "code": "IN_PROGRESS",
+            "label": "Em atendimento"
+        },
+        {
+            "code": "CLOSED",
+            "label": "Fechado"
+        }
+    ],
+    "notes": [
+        {
+            "author": "Admin Demo",
+            "text": "Chamado registrado pelo painel administrativo.",
+            "createdAt": "2026-11-09T14:00:30.656Z"
+        },
+        {
+            "author": "Admin Demo",
+            "text": "Chamado atribuído a Ana Beatriz Souza.",
+            "createdAt": "2026-11-09T14:06:42.424Z"
+        },
+        {
+            "author": "Admin Demo",
+            "text": "Porta do switch reconfigurada na VLAN correta.",
+            "createdAt": "2026-11-09T14:06:49.883Z"
+        }
+    ],
+    "history": [
+        {
+            "from": {
+                "code": "OPEN",
+                "label": "Aberto"
+            },
+            "to": {
+                "code": "IN_PROGRESS",
+                "label": "Em atendimento"
+            },
+            "changedBy": "Admin Demo",
+            "changedAt": "2026-11-09T14:06:44.916Z"
+        },
+        {
+            "from": {
+                "code": "IN_PROGRESS",
+                "label": "Em atendimento"
+            },
+            "to": {
+                "code": "RESOLVED",
+                "label": "Resolvido"
+            },
+            "changedBy": "Admin Demo",
+            "changedAt": "2026-11-09T14:06:49.883Z"
+        }
+    ]
+}
