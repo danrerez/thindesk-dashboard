@@ -26,11 +26,11 @@
     },
     {
       "key": "email",
-      "value": "admin@exemplo.com"
+      "value": "${YOUR_EMAIL}"
     },
     {
       "key": "password",
-      "value": "TroqueEssaSenha@123"
+      "value": "${YOUR_PASSWORD}"
     },
     {
       "key": "from",

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.1] - 2026-11-09
+
+### Alterado
+
+- `.env.example`, coleção Postman e exemplo de `curl` do README usam chaves `${YOUR_...}` no lugar de credenciais de exemplo.
+
 ## [1.0.0] - 2026-11-09
 
 Primeira versão do dashboard administrativo do Thindesk.

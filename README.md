@@ -65,7 +65,7 @@ Base reaproveitada da atividade de login (M1): cadastro, login, perfis `USER`/`M
 Detalhes, exemplos e erros em [docs/API.md](docs/API.md).
 
 ```bash
-curl -u admin@exemplo.com:SuaSenha "http://localhost:8080/api/v1/dashboard/summary?from=2026-10-11&to=2026-11-09"
+curl -u "${YOUR_EMAIL}:${YOUR_PASSWORD}" "http://localhost:8080/api/v1/dashboard/summary?from=2026-10-11&to=2026-11-09"
 ```
 
 ## Estrutura do projeto
