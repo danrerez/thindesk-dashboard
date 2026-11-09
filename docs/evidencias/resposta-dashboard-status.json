@@ -1,0 +1,77 @@
+{
+    "total": 226,
+    "items": [
+        {
+            "code": "OPEN",
+            "label": "Aberto",
+            "count": 3,
+            "percent": 1.3,
+            "active": true
+        },
+        {
+            "code": "IN_PROGRESS",
+            "label": "Em atendimento",
+            "count": 11,
+            "percent": 4.9,
+            "active": true
+        },
+        {
+            "code": "WAITING_USER",
+            "label": "Aguardando usuário",
+            "count": 2,
+            "percent": 0.9,
+            "active": true
+        },
+        {
+            "code": "RESOLVED",
+            "label": "Resolvido",
+            "count": 8,
+            "percent": 3.5,
+            "active": false
+        },
+        {
+            "code": "CLOSED",
+            "label": "Fechado",
+            "count": 196,
+            "percent": 86.7,
+            "active": false
+        },
+        {
+            "code": "CANCELED",
+            "label": "Cancelado",
+            "count": 6,
+            "percent": 2.7,
+            "active": false
+        }
+    ],
+    "activeByPriority": [
+        {
+            "code": "CRITICAL",
+            "label": "Crítica",
+            "slaHours": 4,
+            "active": 1,
+            "overdue": 1
+        },
+        {
+            "code": "HIGH",
+            "label": "Alta",
+            "slaHours": 8,
+            "active": 2,
+            "overdue": 0
+        },
+        {
+            "code": "MEDIUM",
+            "label": "Média",
+            "slaHours": 24,
+            "active": 6,
+            "overdue": 4
+        },
+        {
+            "code": "LOW",
+            "label": "Baixa",
+            "slaHours": 72,
+            "active": 7,
+            "overdue": 7
+        }
+    ]
+}

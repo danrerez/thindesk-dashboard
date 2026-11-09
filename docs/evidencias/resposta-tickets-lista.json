@@ -1,0 +1,68 @@
+{
+    "content": [
+        {
+            "id": "6af1d146982ced63ebadb715",
+            "protocol": "TD-2026-001233",
+            "title": "Teclado com teclas falhando",
+            "type": {
+                "code": "HARDWARE",
+                "label": "Hardware"
+            },
+            "priority": {
+                "code": "LOW",
+                "label": "Baixa"
+            },
+            "status": {
+                "code": "IN_PROGRESS",
+                "label": "Em atendimento"
+            },
+            "department": {
+                "code": "SALES",
+                "label": "Comercial"
+            },
+            "requesterName": "João Pedro Santos",
+            "technician": {
+                "id": "6af1d145982ced63ebadb240",
+                "name": "Rafael Oliveira"
+            },
+            "openedAt": "2026-10-19T11:20:00Z",
+            "dueAt": "2026-10-22T11:20:00Z",
+            "resolvedAt": null,
+            "overdue": true
+        },
+        {
+            "id": "6af1d146982ced63ebadb766",
+            "protocol": "TD-2026-001314",
+            "title": "Pasta de rede inacessível",
+            "type": {
+                "code": "NETWORK",
+                "label": "Rede e internet"
+            },
+            "priority": {
+                "code": "MEDIUM",
+                "label": "Média"
+            },
+            "status": {
+                "code": "IN_PROGRESS",
+                "label": "Em atendimento"
+            },
+            "department": {
+                "code": "LOGISTICS",
+                "label": "Logística"
+            },
+            "requesterName": "Isabela Duarte",
+            "technician": {
+                "id": "6af1d145982ced63ebadb23e",
+                "name": "Juliana Martins"
+            },
+            "openedAt": "2026-10-28T20:38:00Z",
+            "dueAt": "2026-10-29T20:38:00Z",
+            "resolvedAt": null,
+            "overdue": true
+        }
+    ],
+    "page": 0,
+    "size": 2,
+    "totalElements": 12,
+    "totalPages": 6
+}

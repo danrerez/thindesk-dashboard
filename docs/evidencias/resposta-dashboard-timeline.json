@@ -1,0 +1,56 @@
+{
+    "granularity": {
+        "code": "WEEK",
+        "label": "Semana"
+    },
+    "period": {
+        "from": "2026-10-11",
+        "to": "2026-11-09"
+    },
+    "points": [
+        {
+            "period": "2026-10-05",
+            "label": "Sem. 05/10",
+            "opened": 0,
+            "solved": 3,
+            "avgResolutionHours": 50.7
+        },
+        {
+            "period": "2026-10-12",
+            "label": "Sem. 12/10",
+            "opened": 57,
+            "solved": 51,
+            "avgResolutionHours": 32.2
+        },
+        {
+            "period": "2026-10-19",
+            "label": "Sem. 19/10",
+            "opened": 51,
+            "solved": 52,
+            "avgResolutionHours": 34.6
+        },
+        {
+            "period": "2026-10-26",
+            "label": "Sem. 26/10",
+            "opened": 62,
+            "solved": 58,
+            "avgResolutionHours": 36.2
+        },
+        {
+            "period": "2026-11-02",
+            "label": "Sem. 02/11",
+            "opened": 51,
+            "solved": 47,
+            "avgResolutionHours": 47.6
+        },
+        {
+            "period": "2026-11-09",
+            "label": "Sem. 09/11",
+            "opened": 5,
+            "solved": 1,
+            "avgResolutionHours": 0.1
+        }
+    ],
+    "totalOpened": 226,
+    "totalSolved": 212
+}
