@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="roleCounts(counts)" class="grid grid--3 stats">
+    <div class="stat" th:each="entry : ${counts}">
+        <span class="stat__label" th:text="${entry.key.label}">Perfil</span>
+        <strong class="stat__value" th:text="${entry.value}">0</strong>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header class="topbar" th:fragment="topbar">
+    <button type="button" class="topbar__toggle" data-sidebar-toggle aria-controls="sidebar" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </button>
+
+    <details class="user-menu" data-user-menu>
+        <summary class="user-menu__trigger">
+            <span class="avatar" th:text="${#strings.toUpperCase(#strings.substring(currentUserName, 0, 1))}">U</span>
+            <span class="user-menu__name" th:text="${currentUserName}">Usuário</span>
+            <svg class="user-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+        </summary>
+        <div class="user-menu__panel">
+            <div class="user-menu__header">
+                <strong th:text="${currentUserName}">Usuário</strong>
+                <span class="muted small" th:text="${#authentication.name}">email</span>
+                <th:block th:if="${currentUserRole}">
+                    <span th:replace="~{fragments/badges :: role(${currentUserRole})}"></span>
+                </th:block>
+            </div>
+            <a class="user-menu__item" th:href="@{/profile}">Meu perfil</a>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="user-menu__item user-menu__item--danger">Sair</button>
+            </form>
+        </div>
+    </details>
+</header>
+</body>
+</html>

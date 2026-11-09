@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+<span th:fragment="role(role)" class="badge"
+      th:classappend="|badge--${#strings.toLowerCase(role.name())}|"
+      th:text="${role.label}">Perfil</span>
+
+<span th:fragment="status(user)">
+    <span th:if="${user.locked}" class="badge badge--warning">Bloqueado</span>
+    <span th:if="${!user.locked && user.enabled}" class="badge badge--success">Ativo</span>
+    <span th:if="${!user.locked && !user.enabled}" class="badge badge--danger">Desativado</span>
+</span>
+</body>
+</html>

@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: thindesk-dashboard
+  config:
+    import: optional:file:.env[.properties]
+
+  mongodb:
+    uri: ${MONGODB_URI}
+    database: ${MONGODB_DATABASE:thindesk}
+  data:
+    mongodb:
+      auto-index-creation: true
+
+  thymeleaf:
+    cache: ${THYMELEAF_CACHE:true}
+
+server:
+  port: ${PORT:8080}
+  error:
+    whitelabel:
+      enabled: false
+    include-stacktrace: never
+
+app:
+  theme:
+    name: ${APP_THEME:default}
+    layout: ${APP_LAYOUT:layouts/main}
+  security:
+    max-login-attempts: 5
+    lock-duration: 15m
+    max-sessions-per-user: 3
+    session-timeout: 30m
+    secure-cookie: ${COOKIE_SECURE:false}
+  dashboard:
+    zone: ${APP_TIMEZONE:America/Sao_Paulo}
+    refresh-seconds: ${DASHBOARD_REFRESH_SECONDS:60}
+  seed:
+    enabled: ${SEED_ENABLED:true}
+    reset: ${SEED_RESET:false}
+    tickets: ${SEED_TICKETS:1400}
+    days: ${SEED_DAYS:180}
+  admin:
+    name: ${ADMIN_NAME:Administrador}
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+  paths-to-match: /api/**
+  default-produces-media-type: application/json
+
+logging:
+  level:
+    br.com.danielcardoso.thindesk: INFO

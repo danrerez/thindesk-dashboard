@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{__${theme.layout}__}">
+<head>
+    <title>Usuários</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <header class="page__header">
+        <div>
+            <span class="eyebrow" th:text="${canManage} ? 'Administração' : 'Gerência'">Usuários</span>
+            <h1 th:text="${canManage} ? 'Gestão de usuários' : 'Usuários cadastrados'">Usuários</h1>
+            <p class="muted" th:if="${canManage}">
+                Alterar o perfil, desativar ou excluir uma conta encerra as sessões ativas dela.
+            </p>
+            <p class="muted" th:unless="${canManage}">
+                Consulta somente leitura. Alterações são feitas pelo administrador.
+            </p>
+        </div>
+    </header>
+
+    <div th:replace="~{fragments/stats :: roleCounts(${roleCounts})}"></div>
+
+    <div class="card table-card">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>Perfil</th>
+                <th>Status</th>
+                <th>Último acesso</th>
+                <th th:if="${canManage}" class="text-right">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="u : ${users}" th:with="self=${u.email == #authentication.name}, editable=${canManage && !self}">
+                <td>
+                    <strong th:text="${u.name}">Nome</strong>
+                    <span th:if="${self}" class="muted">(você)</span>
+                    <div class="muted small" th:text="${u.email}">email</div>
+                </td>
+                <td>
+                    <form th:if="${editable}" th:action="@{/users/{id}/role(id=${u.id})}" method="post"
+                          class="inline-form">
+                        <select name="role" aria-label="Perfil" data-autosubmit>
+                            <option th:each="r : ${roles}" th:value="${r}" th:text="${r.label}"
+                                    th:selected="${r == u.role}">Perfil</option>
+                        </select>
+                        <noscript><button type="submit" class="btn btn--ghost btn--sm">Salvar</button></noscript>
+                    </form>
+                    <th:block th:unless="${editable}">
+                        <span th:replace="~{fragments/badges :: role(${u.role})}"></span>
+                    </th:block>
+                </td>
+                <td><span th:replace="~{fragments/badges :: status(${u})}"></span></td>
+                <td class="small"
+                    th:text="${u.lastLoginAt != null} ? ${#temporals.format(u.lastLoginAt, 'dd/MM/yyyy HH:mm')} : '-'">-</td>
+                <td th:if="${canManage}">
+                    <div class="table__actions">
+                        <form th:if="${u.locked}" th:action="@{/users/{id}/unlock(id=${u.id})}" method="post">
+                            <button type="submit" class="btn btn--ghost btn--sm">Desbloquear</button>
+                        </form>
+                        <th:block th:if="${editable}">
+                            <form th:action="@{/users/{id}/toggle(id=${u.id})}" method="post">
+                                <button type="submit" class="btn btn--ghost btn--sm"
+                                        th:text="${u.enabled} ? 'Desativar' : 'Ativar'">Desativar</button>
+                            </form>
+                            <form th:action="@{/users/{id}/delete(id=${u.id})}" method="post"
+                                  data-confirm="Excluir este usuário definitivamente?">
+                                <button type="submit" class="btn btn--danger btn--sm">Excluir</button>
+                            </form>
+                        </th:block>
+                    </div>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(users)}">
+                <td th:colspan="${canManage} ? 5 : 4" class="muted">Nenhum usuário cadastrado.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

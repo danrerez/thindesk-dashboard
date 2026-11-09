@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="alerts" class="alerts">
+    <div th:if="${successMessage}" class="alert alert--success" role="status" th:text="${successMessage}"></div>
+    <div th:if="${errorMessage}" class="alert alert--danger" role="alert" th:text="${errorMessage}"></div>
+</div>
+
+<p th:fragment="fieldError(field)" th:if="${#fields.hasErrors(field)}" class="field__error"
+   th:errors="*{__${field}__}"></p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:attr="data-theme=${theme.name}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_csrf" th:if="${_csrf != null}" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:if="${_csrf != null}" th:content="${_csrf.headerName}">
+    <title layout:title-pattern="$CONTENT_TITLE | Thindesk">Thindesk</title>
+    <link rel="icon" type="image/svg+xml" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" th:href="@{${theme.stylesheet}}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <script th:src="@{/js/app.js}" defer></script>
+</head>
+<body th:class="${#authorization.expression('isAuthenticated()')} ? 'app' : 'public'">
+
+<th:block sec:authorize="isAuthenticated()">
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+    <div class="sidebar-backdrop" data-sidebar-close></div>
+</th:block>
+
+<div class="app__main">
+    <th:block sec:authorize="isAuthenticated()">
+        <div th:replace="~{fragments/topbar :: topbar}"></div>
+    </th:block>
+
+    <main class="page">
+        <div th:replace="~{fragments/alerts :: alerts}"></div>
+        <section layout:fragment="content"></section>
+    </main>
+</div>
+</body>
+</html>
