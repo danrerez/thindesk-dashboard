@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="errorPage(code, title, message)" class="error-page">
+    <span class="error-page__code" th:text="${code}">500</span>
+    <h1 th:text="${title}">Erro</h1>
+    <p class="muted" th:text="${message}">Mensagem</p>
+    <a class="btn btn--primary" th:href="@{/}">Voltar ao início</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+    "metric": {
+        "code": "SOLVED",
+        "label": "Chamados atendidos (resolvidos ou fechados)"
+    },
+    "total": 204,
+    "items": [
+        {
+            "position": 1,
+            "code": "SOFTWARE",
+            "label": "Software e instalação",
+            "total": 43,
+            "solved": 39,
+            "active": 3,
+            "share": 19.1,
+            "avgResolutionHours": 50.2,
+            "slaMetPercent": 53.8
+        },
+        {
+            "position": 2,
+            "code": "HARDWARE",
+            "label": "Hardware",
+            "total": 36,
+            "solved": 33,
+            "active": 3,
+            "share": 16.2,
+            "avgResolutionHours": 30.8,
+            "slaMetPercent": 36.4
+        },
+        {
+            "position": 3,
+            "code": "ERP",
+            "label": "Sistema ERP",
+            "total": 35,
+            "solved": 30,
+            "active": 5,
+            "share": 14.7,
+            "avgResolutionHours": 31.6,
+            "slaMetPercent": 63.3
+        }
+    ]
+}

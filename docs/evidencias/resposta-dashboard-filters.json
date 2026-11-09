@@ -1,0 +1,195 @@
+{
+    "statuses": [
+        {
+            "code": "OPEN",
+            "label": "Aberto"
+        },
+        {
+            "code": "IN_PROGRESS",
+            "label": "Em atendimento"
+        },
+        {
+            "code": "WAITING_USER",
+            "label": "Aguardando usuário"
+        },
+        {
+            "code": "RESOLVED",
+            "label": "Resolvido"
+        },
+        {
+            "code": "CLOSED",
+            "label": "Fechado"
+        },
+        {
+            "code": "CANCELED",
+            "label": "Cancelado"
+        }
+    ],
+    "types": [
+        {
+            "code": "HARDWARE",
+            "label": "Hardware"
+        },
+        {
+            "code": "SOFTWARE",
+            "label": "Software e instalação"
+        },
+        {
+            "code": "NETWORK",
+            "label": "Rede e internet"
+        },
+        {
+            "code": "ACCESS",
+            "label": "Acesso e senhas"
+        },
+        {
+            "code": "EMAIL",
+            "label": "E-mail"
+        },
+        {
+            "code": "PRINTER",
+            "label": "Impressoras"
+        },
+        {
+            "code": "ERP",
+            "label": "Sistema ERP"
+        },
+        {
+            "code": "PHONE",
+            "label": "Telefonia"
+        }
+    ],
+    "priorities": [
+        {
+            "code": "LOW",
+            "label": "Baixa",
+            "slaHours": 72
+        },
+        {
+            "code": "MEDIUM",
+            "label": "Média",
+            "slaHours": 24
+        },
+        {
+            "code": "HIGH",
+            "label": "Alta",
+            "slaHours": 8
+        },
+        {
+            "code": "CRITICAL",
+            "label": "Crítica",
+            "slaHours": 4
+        }
+    ],
+    "departments": [
+        {
+            "code": "FINANCE",
+            "label": "Financeiro"
+        },
+        {
+            "code": "HR",
+            "label": "Recursos Humanos"
+        },
+        {
+            "code": "SALES",
+            "label": "Comercial"
+        },
+        {
+            "code": "OPERATIONS",
+            "label": "Operações"
+        },
+        {
+            "code": "MARKETING",
+            "label": "Marketing"
+        },
+        {
+            "code": "LOGISTICS",
+            "label": "Logística"
+        },
+        {
+            "code": "LEGAL",
+            "label": "Jurídico"
+        },
+        {
+            "code": "BOARD",
+            "label": "Diretoria"
+        }
+    ],
+    "technicians": [
+        {
+            "id": "6af1d145982ced63ebadb23c",
+            "name": "Ana Beatriz Souza",
+            "level": "N1",
+            "active": true
+        },
+        {
+            "id": "6af1d145982ced63ebadb241",
+            "name": "Camila Rocha",
+            "level": "N2",
+            "active": true
+        },
+        {
+            "id": "6af1d145982ced63ebadb23f",
+            "name": "Eduardo Nunes",
+            "level": "N1",
+            "active": false
+        },
+        {
+            "id": "6af1d145982ced63ebadb23e",
+            "name": "Juliana Martins",
+            "level": "N1",
+            "active": true
+        },
+        {
+            "id": "6af1d145982ced63ebadb23d",
+            "name": "Lucas Ferreira",
+            "level": "N1",
+            "active": true
+        },
+        {
+            "id": "6af1d145982ced63ebadb243",
+            "name": "Marcos Vinícius Lima",
+            "level": "N3",
+            "active": true
+        },
+        {
+            "id": "6af1d145982ced63ebadb244",
+            "name": "Patrícia Gomes",
+            "level": "N3",
+            "active": true
+        },
+        {
+            "id": "6af1d145982ced63ebadb240",
+            "name": "Rafael Oliveira",
+            "level": "N2",
+            "active": true
+        },
+        {
+            "id": "6af1d145982ced63ebadb242",
+            "name": "Thiago Almeida",
+            "level": "N2",
+            "active": true
+        }
+    ],
+    "granularities": [
+        {
+            "code": "DAY",
+            "label": "Dia"
+        },
+        {
+            "code": "WEEK",
+            "label": "Semana"
+        },
+        {
+            "code": "MONTH",
+            "label": "Mês"
+        }
+    ],
+    "dataRange": {
+        "firstOpenedAt": "2026-05-14",
+        "lastOpenedAt": "2026-11-09",
+        "totalTickets": 1401
+    },
+    "timezone": "America/Sao_Paulo",
+    "refreshSeconds": 60
+}

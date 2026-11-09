@@ -1,0 +1,20 @@
+[
+    {
+        "id": "6af1d145982ced63ebadb23c",
+        "name": "Ana Beatriz Souza",
+        "email": "ana.souza@ti.exemplo.com.br",
+        "level": {
+            "code": "N1",
+            "label": "Nível 1 (Service Desk)"
+        },
+        "active": true
+    },
+    {
+        "id": "6af1d145982ced63ebadb241",
+        "name": "Camila Rocha",
+        "email": "camila.rocha@ti.exemplo.com.br",
+        "level": {
+            "code": "N2",
+            "label": "Nível 2 (Suporte técnico)"
+        },
+        "active": true

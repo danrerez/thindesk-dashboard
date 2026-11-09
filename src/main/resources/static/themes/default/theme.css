@@ -1,0 +1,59 @@
+:root {
+    color-scheme: light;
+
+    --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-display: var(--font-sans);
+
+    --color-bg: #f5f6f8;
+    --color-surface: #ffffff;
+    --color-surface-alt: #eef1f5;
+    --color-border: #dde2ea;
+    --color-text: #1b2230;
+    --color-muted: #5f6b7d;
+
+    --color-primary: #2f5bea;
+    --color-primary-hover: #2449c4;
+    --color-primary-contrast: #ffffff;
+    --color-focus: rgba(47, 91, 234, 0.35);
+
+    --color-success: #1f8a5b;
+    --color-success-bg: #e5f5ed;
+    --color-warning: #a8620b;
+    --color-warning-bg: #fdf1df;
+    --color-danger: #c63a3a;
+    --color-danger-bg: #fbe7e7;
+
+    --color-role-user: #5f6b7d;
+    --color-role-manager: #8a4fd8;
+    --color-role-admin: #c63a3a;
+
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-lg: 16px;
+    --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 4px 12px rgba(16, 24, 40, 0.06);
+
+    --color-primary-soft: rgba(47, 91, 234, 0.1);
+
+    --navbar-bg: #ffffff;
+    --navbar-text: var(--color-text);
+
+    --sidebar-bg: #ffffff;
+    --sidebar-text: #5f6b7d;
+    --sidebar-active-text: var(--color-primary);
+    --sidebar-active-bg: var(--color-primary-soft);
+
+    --backdrop: rgba(16, 24, 40, 0.35);
+
+    /* Cores das situações e prioridades (gráficos e badges do dashboard) */
+    --status-open: #2f5bea;
+    --status-in-progress: #8a4fd8;
+    --status-waiting-user: #d08a1e;
+    --status-resolved: #1f8a5b;
+    --status-closed: #5b8c7a;
+    --status-canceled: #9aa3b2;
+
+    --priority-low: #5f6b7d;
+    --priority-medium: #2f5bea;
+    --priority-high: #c8730a;
+    --priority-critical: #c63a3a;
+}

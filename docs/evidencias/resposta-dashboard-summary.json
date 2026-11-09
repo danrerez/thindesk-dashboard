@@ -1,0 +1,38 @@
+{
+    "period": {
+        "from": "2026-10-11",
+        "to": "2026-11-09"
+    },
+    "totals": {
+        "total": 226,
+        "active": 16,
+        "open": 3,
+        "inProgress": 11,
+        "waitingUser": 2,
+        "solved": 204,
+        "canceled": 6,
+        "overdue": 12,
+        "criticalActive": 1,
+        "unassignedActive": 3
+    },
+    "rates": {
+        "resolutionRate": 92.7,
+        "slaMetPercent": 66.7
+    },
+    "times": {
+        "avgFirstResponseHours": 7.6,
+        "avgResolutionHours": 32.7,
+        "medianResolutionHours": 16.3
+    },
+    "comparison": {
+        "previousPeriod": {
+            "from": "2026-09-11",
+            "to": "2026-10-10"
+        },
+        "previousTotal": 259,
+        "previousSolved": 247,
+        "totalChangePercent": -12.7,
+        "solvedChangePercent": -17.4
+    },
+    "generatedAt": "2026-11-09T14:09:27.847220200Z"
+}

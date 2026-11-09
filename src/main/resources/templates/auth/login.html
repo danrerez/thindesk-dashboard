@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{__${theme.layout}__}">
+<head>
+    <title>Entrar</title>
+</head>
+<body>
+<section layout:fragment="content" class="auth">
+    <div class="card auth__card">
+        <span class="eyebrow">Thindesk</span>
+        <h1>Entrar</h1>
+        <p class="muted">Painel administrativo de chamados técnicos. Use o e-mail e a senha cadastrados.</p>
+
+        <div th:if="${param.error}" class="alert alert--danger" role="alert">
+            E-mail ou senha inválidos. Por segurança, a conta é bloqueada por alguns minutos
+            após 5 tentativas incorretas seguidas.
+        </div>
+        <div th:if="${param.logout}" class="alert alert--success" role="status">Você saiu do sistema.</div>
+        <div th:if="${param.expired}" class="alert alert--warning" role="status">
+            Sua sessão foi encerrada. Entre novamente.
+        </div>
+
+        <form th:action="@{/login}" method="post" class="form" novalidate>
+            <div class="field">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" autocomplete="username" required autofocus>
+            </div>
+            <div class="field">
+                <label for="password">Senha</label>
+                <div class="password">
+                    <input type="password" id="password" name="password" autocomplete="current-password" required>
+                    <button type="button" class="password__toggle" data-toggle-password="password"
+                            aria-label="Mostrar senha">Mostrar</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block">Entrar</button>
+        </form>
+
+        <p class="auth__switch">Ainda não tem conta? <a th:href="@{/register}">Cadastre-se</a></p>
+    </div>
+</section>
+</body>
+</html>
