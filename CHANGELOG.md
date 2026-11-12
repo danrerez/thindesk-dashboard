@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.0] - 2026-11-12
+
+### Adicionado
+
+- Documentação técnica em Word e PDF nas normas ABNT (NBR 14724 e NBR 6023), com diagramas de arquitetura, modelo de dados e fluxo de situações.
+
 ## [1.0.1] - 2026-11-09
 
 ### Alterado

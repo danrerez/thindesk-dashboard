@@ -4,6 +4,8 @@
 **Aluno:** Daniel Cardoso Leão
 **Professor:** Prof. Alessandro Aparecido da Silva Horas
 
+> Versão nas normas ABNT: [Documentacao-Thindesk-ABNT.docx](Documentacao-Thindesk-ABNT.docx) (Word) e [Documentacao-Thindesk-ABNT.pdf](Documentacao-Thindesk-ABNT.pdf).
+
 ## Sumário
 
 1. [Contextualização e objetivo](#1-contextualização-e-objetivo)

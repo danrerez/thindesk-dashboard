@@ -10,7 +10,8 @@ Dashboard administrativo integrado ao sistema de chamados técnicos **Thindesk**
 
 | Item | Onde está |
 |---|---|
-| Documento (requisitos funcionais e não funcionais, análise e projeto, decisões, evidências de testes, roteiro do vídeo) | [docs/DOCUMENTACAO.md](docs/DOCUMENTACAO.md) |
+| Documento nas normas ABNT (requisitos funcionais e não funcionais, análise e projeto, endpoints, telas, decisões e evidências de testes) | [Word](docs/Documentacao-Thindesk-ABNT.docx) e [PDF](docs/Documentacao-Thindesk-ABNT.pdf) |
+| Mesmo conteúdo em Markdown, com o roteiro do vídeo | [docs/DOCUMENTACAO.md](docs/DOCUMENTACAO.md) |
 | Documentação dos endpoints (parâmetros, exemplos e erros) | [docs/API.md](docs/API.md) e Swagger UI em `/swagger-ui.html` |
 | Evidências de testes | [docs/evidencias](docs/evidencias/) |
 | Coleção Postman | [postman/Thindesk-API.postman_collection.json](postman/Thindesk-API.postman_collection.json) |
