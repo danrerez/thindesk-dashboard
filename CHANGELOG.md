@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0] - 2026-11-14
+
+### Adicionado
+
+- Vídeo de apresentação (2min48) em `docs/video/` e link no README.
+
 ## [1.1.0] - 2026-11-12
 
 ### Adicionado
