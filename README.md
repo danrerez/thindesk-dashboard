@@ -15,7 +15,7 @@ Dashboard administrativo integrado ao sistema de chamados técnicos **Thindesk**
 | Documentação dos endpoints (parâmetros, exemplos e erros) | [docs/API.md](docs/API.md) e Swagger UI em `/swagger-ui.html` |
 | Evidências de testes | [docs/evidencias](docs/evidencias/) |
 | Coleção Postman | [postman/Thindesk-API.postman_collection.json](postman/Thindesk-API.postman_collection.json) |
-| Vídeo de apresentação (até 3 min) | `docs/video/` (link no fim deste README) |
+| Vídeo de apresentação (2min48) | [docs/video/thindesk-apresentacao.mp4](docs/video/thindesk-apresentacao.mp4) |
 
 ## Funcionalidades
 
@@ -158,7 +158,7 @@ Relatórios em [docs/evidencias](docs/evidencias/).
 
 ## Vídeo de apresentação
 
-Link: _adicionar após a gravação_
+Duração: 2min48. Arquivo: [docs/video/thindesk-apresentacao.mp4](https://github.com/danrerez/thindesk-dashboard/blob/main/docs/video/thindesk-apresentacao.mp4) (abra e clique em Download ou Raw para assistir).
 
 ## Autor
 
